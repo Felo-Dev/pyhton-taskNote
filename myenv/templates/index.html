@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notas</title>
+    <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css"
+>
+</head>
+<body style="display: flex; flex-direction: column; align-items: center;">
+    <h1 class="title is-1">Notas</h1>
+    <form action="/add_note" method="post">
+        <input class="input"  type="text" name="note">
+        <button  class="button is-primary" type="submit">Agregar nota</button>
+    </form>
+    <ul>
+        {% for note in notes %}
+        <li class="subtitle is-3">{{ note }}
+            <form action="/edit_note/{{ loop.index0 }}" method="post">
+                <input class="input"  type="text" name="new_note">
+                <button class="button is-primary" type="submit">Editar</button>
+            </form>
+            <a class="button is-danger" href="/delete_note/{{ loop.index0 }}">Eliminar</a>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+
+</html>

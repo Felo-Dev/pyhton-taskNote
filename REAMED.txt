@@ -1,0 +1,4 @@
+cd ~/Documentos/pyhton/myenv/
+source bin/activate
+python app.py
+deactivate
